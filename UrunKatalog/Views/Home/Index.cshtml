@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html>
+<html ng-app="katalogApp">
 <head >
     <meta charset="utf-8">
     <title>Aytaç Bebe Çocuk Gereçleri | %100 Yerli Üretim.</title>
@@ -22,22 +22,9 @@
     <!--[if lt IE 9]>
       <script src="/Scripts/js/plugins/respond.js"></script>
     <![endif]-->
-    <script src="/Scripts/angular.min.js"></script>
-    <script type="text/javascript">
-        angular.module('katalogApp', [])
-            .controller('katalogControl', [function () {
-                var self = this;
-                var urunler = [];
-                var urun = {};
-                urun.ad = "ahmet";
-                urunler.push(urun);
-                self.urunler = urunler;
-            }]);
-    </script>
 </head>
 <!--Body-->
-<body ng-app="katalogApp" ng-controller="katalogControl as ctrl">
-
+<body ng-controller="katalogControl as ctrl">
     <!--Login Modal-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -116,6 +103,8 @@
     <!--Page Content-->
     <div class="page-content">
 
+        <input type="text" ng-model="ctrl.username" /> <h1>You typed {{ctrl.username}}</h1>
+
         <!--Hero Slider-->
         <section class="hero-slider">
             <div class="master-slider" id="hero-slider">
@@ -158,7 +147,7 @@
                     <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
                         <a href="@Url.Action("TekUrun","Urun")">
                             <img src="/Content/img/categories/1.png" alt="1" />
-                            <p>{{ctrl.urunler[0].ad}}{{1==1}}Category name</p>
+                            <p>Category name</p>
                         </a>
                     </div>
                     <!--Category-->
@@ -207,12 +196,10 @@
                     <!--Tile-->
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="tile">
-
-
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[0].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -224,7 +211,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[1].ad}}</span>
 
                             </div>
                         </div>
@@ -235,7 +222,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[2].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -246,7 +233,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[3].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -257,7 +244,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[4].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -268,7 +255,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[5].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -279,7 +266,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[6].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -290,7 +277,7 @@
                             <a href="@Url.Action("TekUrun","Urun")"><img src="/Content/img/catalog/1.png" alt="1" /></a>
                             <div class="footer">
                                 <a href="@Url.Action("TekUrun","Urun")">The Buccaneer</a>
-                                <span>by Pirate3d</span>
+                                <span>{{ctrl.urunler[7].ad}}</span>
                             </div>
                         </div>
                     </div>
@@ -445,5 +432,24 @@
     <script src="~/Scripts/js/plugins/masterslider.min.js"></script>
     <script src="~/Scripts/mailer/mailer.js"></script>
     <script src="~/Scripts/js/scripts.js"></script>
-</body><!--Body Close-->
+    <script src="/Scripts/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('katalogApp', [])
+            .controller('katalogControl', [function () {
+                var self = this;
+                self.username = 'nothing';
+                var urunler = [];
+                //var urun = {};
+                //urun.ad = "ahmet";
+                //urunler.push(urun);
+                @for (int i = 0; i < 10; i++)
+                {
+                    @Html.Raw(string.Format("urunler.push({{ad:\"{0}. by Pirate3d\"}});", i))
+                }
+
+                self.urunler = urunler;
+            }]);
+    </script>
+</body>
+<!--Body Close-->
 </html>
